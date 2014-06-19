@@ -2,7 +2,7 @@ package scalacache.redis
 
 import scalacache.{ LoggingSupport, Cache }
 import scala.concurrent.duration._
-import com.typesafe.scalalogging.slf4j.StrictLogging
+//import com.typesafe.scalalogging.slf4j.org.genomebridge.common.Logging
 import redis.clients.jedis.Jedis
 import java.nio.charset.Charset
 import scala.concurrent.{ Future, ExecutionContext }
@@ -17,7 +17,7 @@ class RedisCache(client: Jedis)(implicit execContext: ExecutionContext = Executi
     extends Cache
     with RedisSerialization
     with LoggingSupport
-    with StrictLogging {
+    with org.genomebridge.common.Logging {
 
   import RedisCache.StringWithUtf8Bytes
 

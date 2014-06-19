@@ -1,6 +1,6 @@
 package scalacache
 
-import scalacache.memoization.MemoizationConfig
+//import scalacache.memoization.MemoizationConfig
 
 /**
  * Container holding the cache itself, along with all necessary configuration.
@@ -10,6 +10,6 @@ import scalacache.memoization.MemoizationConfig
 case class ScalaCache(
   cache: Cache,
   cacheConfig: CacheConfig = CacheConfig(),
-  keyBuilder: CacheKeyBuilder = DefaultCacheKeyBuilder,
-  memoization: MemoizationConfig = MemoizationConfig())
+  keyBuilder: CacheKeyBuilder = DefaultCacheKeyBuilder /*,
+  memoization: MemoizationConfig = MemoizationConfig()*/ )
 

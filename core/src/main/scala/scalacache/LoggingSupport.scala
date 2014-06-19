@@ -1,7 +1,7 @@
 package scalacache
 
 import scala.concurrent.duration.Duration
-import com.typesafe.scalalogging.slf4j.StrictLogging
+//import com.typesafe.scalalogging.slf4j.org.genomebridge.common.Logging
 
 /**
  * Helper methods for logging
@@ -9,7 +9,8 @@ import com.typesafe.scalalogging.slf4j.StrictLogging
  * Author: chris
  * Created: 4/9/14
  */
-trait LoggingSupport { self: StrictLogging =>
+
+trait LoggingSupport extends org.genomebridge.common.Logging { // self: StrictLogging =>
 
   /**
    * Output a debug log to record the result of a cache lookup

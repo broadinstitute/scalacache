@@ -7,9 +7,9 @@ import SonatypeKeys._
 import net.virtualvoid.sbt.graph.Plugin._
 
 object ScalaCacheBuild extends Build {
-  
+
   object Versions {
-    val scala = "2.11.0"
+    val scala = "2.10.3"
     val project = "0.4.0-SNAPSHOT"
   }
 
@@ -26,6 +26,7 @@ object ScalaCacheBuild extends Build {
         "org.scala-lang" % "scala-reflect" % s
       }
     )
+    .settings(excludeFilter in unmanagedSourceDirectories := "memoization")
 
   lazy val guava = Project(id = "scalacache-guava", base = file("guava"))
     .settings(implProjectSettings: _*)
@@ -71,7 +72,8 @@ object ScalaCacheBuild extends Build {
   )
 
   lazy val scalaLogging = Seq(
-    "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.0.3"
+    "ch.qos.logback" % "logback-classic" % "1.0.13" % "runtime"
+    //"com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.0.3"
   )
 
   lazy val scalaTest = Seq(
@@ -81,10 +83,15 @@ object ScalaCacheBuild extends Build {
     Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
   } else Nil)
 
+  lazy val genomebridgeDeps = Seq(
+        "org.genomebridge" %% "genomebridge-common" % "0.1.0-SNAPSHOT"
+  )
+
   // Dependencies common to all projects
   lazy val commonDeps =
     scalaLogging ++
-    scalaTest
+    scalaTest ++
+    genomebridgeDeps
 
   // Dependencies common to all implementation projects (i.e. everything except core)
   lazy val implProjectDeps = jodaTime
@@ -147,6 +154,7 @@ object ScalaCacheBuild extends Build {
       .setPreference(AlignParameters, true)
       .setPreference(DoubleIndentClassDeclaration, true)
   )
+
 }
 
 

@@ -4,7 +4,7 @@ import scalacache.{ LoggingSupport, Cache }
 import com.google.common.cache.{ Cache => GCache, CacheBuilder => GCacheBuilder }
 import scala.concurrent.duration.Duration
 import org.joda.time.DateTime
-import com.typesafe.scalalogging.slf4j.StrictLogging
+//import com.typesafe.scalalogging.slf4j.org.genomebridge.common.Logging
 import scala.concurrent.Future
 
 /*
@@ -18,7 +18,7 @@ import scala.concurrent.Future
 class GuavaCache(underlying: GCache[String, Object])
     extends Cache
     with LoggingSupport
-    with StrictLogging {
+    with org.genomebridge.common.Logging {
 
   /**
    * Get the value corresponding to the given key from the cache

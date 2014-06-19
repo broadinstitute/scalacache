@@ -3,7 +3,7 @@ package scalacache.memcached
 import net.spy.memcached.{ AddrUtil, BinaryConnectionFactory, MemcachedClient }
 import scala.concurrent.duration.Duration
 import scalacache.{ LoggingSupport, Cache }
-import com.typesafe.scalalogging.slf4j.{ LazyLogging, StrictLogging }
+//import com.typesafe.scalalogging.slf4j.{ LazyLogging, StrictLogging }
 import scala.concurrent.{ Future, ExecutionContext }
 
 /**
@@ -15,7 +15,7 @@ import scala.concurrent.{ Future, ExecutionContext }
 class MemcachedCache(client: MemcachedClient)(implicit execContext: ExecutionContext = ExecutionContext.global)
     extends Cache
     with MemcachedTTLConvertor
-    with StrictLogging
+    with org.genomebridge.common.Logging
     with LoggingSupport {
 
   val keySanitizer = new MemcachedKeySanitizer
